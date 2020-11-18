@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NyTimesDemo</string>
+    <string name="label_one_day">1 Day</string>
+    <string name="label_seven_days">7 Days</string>
+    <string name="label_thirty_days">30 Days</string>
+    <string name="loading_layout_message">Loading...</string>
+</resources>
