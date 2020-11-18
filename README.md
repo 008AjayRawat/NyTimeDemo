@@ -4,7 +4,7 @@
 
 NyTimesDemo App is a sample application in which you can get the news feeds for 1 day, 7 days or 30 days from NyTimes API.
 
-## Components USED: Kotlin,MVVM,RxJava,Picasso
+## Components USED: Kotlin, MVVM, RxJava, Picasso
 
 ##### App Guide:
 
