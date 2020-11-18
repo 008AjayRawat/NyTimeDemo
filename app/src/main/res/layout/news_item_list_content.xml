@@ -26,6 +26,7 @@
         android:maxLines="2"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@android:color/darker_gray"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView_news_title" />
