@@ -9,14 +9,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-object NewsRepository {
+class NewsRepository : IRepository {
+
     private val service by lazy { RetrofitClient.getService(NewYorkTimesAPI::class.java, BuildConfig.BASE_URL) }
 
-    fun fetchNews(period: Int): Observable<MostPopularNewsResult> {
+    override fun fetchNews(period: Int): Observable<MostPopularNewsResult> {
         return service.fetchMostPopularNews(period, BuildConfig.API_KEY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
-
 
 }

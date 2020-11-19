@@ -15,6 +15,7 @@ import com.app.nytimesdemo.ITEM_JSON
 import com.app.nytimesdemo.R
 import com.app.nytimesdemo.data.enums.Period
 import com.app.nytimesdemo.data.models.NewsResult
+import com.app.nytimesdemo.data.network.repository.NewsRepository
 import com.app.nytimesdemo.ui.adapter.NewsRecyclerViewAdapter
 import com.app.nytimesdemo.viewmodel.INewsImplementer
 import com.app.nytimesdemo.viewmodel.NewsViewModel
@@ -36,7 +37,8 @@ class NewItemListActivity : AppCompatActivity(), INewsImplementer, NewsRecyclerV
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /* Adding Observer and Listener or callback with view model */
+        /* Providing Repository and Adding Observer and Listener or callback with view model */
+        newsViewModel.provideRepository(NewsRepository())
         newsViewModel.listener = this@NewItemListActivity
 
         initToolbar()
@@ -47,17 +49,9 @@ class NewItemListActivity : AppCompatActivity(), INewsImplementer, NewsRecyclerV
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-
         //Fetch News List.
         newsViewModel.fetchNews(Period.WEEK)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater: MenuInflater? = menuInflater
-        menuInflater?.inflate(R.menu.menu_new_item_list, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
 
     private fun initToolbar() {
         val toolbar = findViewById<View?>(R.id.toolbar) as Toolbar
@@ -74,6 +68,12 @@ class NewItemListActivity : AppCompatActivity(), INewsImplementer, NewsRecyclerV
 
         newsRecyclerViewAdapter = NewsRecyclerViewAdapter(this)
         recyclerView?.adapter = newsRecyclerViewAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater: MenuInflater? = menuInflater
+        menuInflater?.inflate(R.menu.menu_new_item_list, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
